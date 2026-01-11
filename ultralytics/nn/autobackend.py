@@ -549,7 +549,9 @@ class AutoBackend(nn.Module):
             import ncnn as pyncnn
 
             net = pyncnn.Net()
-            net.opt.use_vulkan_compute = cuda
+            #net.opt.use_vulkan_compute = cuda
+            net.opt.use_vulkan_compute = True
+            net.set_vulkan_device(1)
             w = Path(w)
             if not w.is_file():  # if not *.param
                 w = next(w.glob("*.param"))  # get *.param file from *_ncnn_model dir
